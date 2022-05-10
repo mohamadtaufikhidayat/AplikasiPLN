@@ -8,6 +8,7 @@ public class SaldoDto {
     private Long pengeluaran;
     private Date waktu;
     private Long no_telp;
+    private Long id;
 
     public Long getSaldo() {
         return saldo;
@@ -47,5 +48,13 @@ public class SaldoDto {
 
     public void setNo_telp(Long no_telp) {
         this.no_telp = no_telp;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

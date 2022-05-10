@@ -22,7 +22,8 @@ public class UserService {
 
     public UserDto register(UserDto dto) {
         User data = convertDTOtoEntity(dto);
-        repo.save(data);
+        repo.save(data);//convert lagi
+        dto.setId(data.getNoInduk());
         return (dto);
     }
 

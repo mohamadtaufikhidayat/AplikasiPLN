@@ -1,16 +1,13 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "akun")
 public class Account {
 
     @Id
-    @Column(name ="no_telp")
+    @Column(name ="no_telp",unique = true)
     private Long notel;
 
     @Column(name ="nik",unique = true)
@@ -18,6 +15,10 @@ public class Account {
 
     @Column(name="name")
     private String nama;
+
+    @OneToOne
+    @JoinColumn(name="id_app",unique = true)
+    private User user;
 
     public Long getNotel() {
         return notel;
@@ -41,5 +42,13 @@ public class Account {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

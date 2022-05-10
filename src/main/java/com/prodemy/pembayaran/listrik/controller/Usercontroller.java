@@ -11,9 +11,8 @@ import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 
@@ -38,11 +37,13 @@ public class Usercontroller {
         if (option.isEmpty()) {
             Optional<Admin> role = adm.findByNo_aplikasi(dto.getNo_pegawai());
             if (role.isPresent()) {
-                respon.setPesan("Register Berhasil");
+                respon.setPesan("Register Berhasil Anda Admin");
                 respon.setData(dto);
                 service.register(dto);
                 }else {
-                respon.setPesan("No Aplikasi Tidak Ditemukan");}
+                respon.setData(dto);
+                respon.setPesan("No Aplikasi Tidak Ditemukan Anda User");
+                service.register(dto);}
             }else{
             respon.setPesan("Register Gagal Email Sudah Terdaftar");}
             return respon;

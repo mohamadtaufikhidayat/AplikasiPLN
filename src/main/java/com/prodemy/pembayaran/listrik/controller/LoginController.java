@@ -29,6 +29,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public DefaultResponse login(@RequestBody UserDto dto) {
+        Login log = convertToEntity(dto);
         DefaultResponse<Login> respon = new DefaultResponse<>();
         Optional<User> option = repo.findByEmail(dto.getEmail());
         if (option.isEmpty()) {
@@ -36,14 +37,16 @@ public class LoginController {
         } else {
             Optional<User> password = repo.findByPassword(dto.getEmail());
             if (String.valueOf(password).equals(String.format("Optional[%s]", dto.getPassword()))) {
-                respon.setData(convertToEntity(dto));
                 Optional<User> role = repo.findByPegawai(dto.getEmail());
                 if (role.isPresent()) {
                     respon.setPesan("Login Berhasil,ADMIN");
                     logrep.save(convertToEntity(dto));
+                    dto.setId(log.getId());
+                    respon.setData(convertToEntity(dto));
                 } else {
                     respon.setPesan("Login Berhasil,USER");
                     logrep.save(convertToEntity(dto));
+                    respon.setData(convertToEntity(dto));
                 }
             } else {
                 respon.setPesan("Password Salah");
@@ -62,6 +65,8 @@ public class LoginController {
     private Login convertToEntity(UserDto dto) {
         Login log = new Login();
         log.setRole(String.valueOf(dto.getNo_pegawai()));
+        log.setPassword(dto.getPassword());
+        log.setId(dto.getId());
         User user = repo.findByEmail(dto.getEmail()).get();
         log.setUser(user);
         Optional<User> option = repo.findByPegawai(dto.getEmail());
@@ -76,10 +81,9 @@ public class LoginController {
     private LoginDto convertToDto(Login log) {
         LoginDto dto = new LoginDto();
         dto.setEmail(log.getUser().getEmail());
-        dto.setPassword("************");
+        dto.setPassword(log.getPassword());
         dto.setRole(log.getRole());
         dto.setWaktu(String.valueOf(log.getCreateDate()));
-        dto.setId(log.getId());
         return dto;
     }
 }

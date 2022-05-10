@@ -19,11 +19,7 @@ import java.util.stream.Collectors;
 public class PenggunaListrikcontroller {
 
     @Autowired
-
     PenggunaListrikrepo repo;
-
-    DataPelRepo repo1;
-
 
     @Autowired
     Userrepo userrepo;
@@ -37,7 +33,7 @@ public class PenggunaListrikcontroller {
             respon.setData(dto);
             regis(dto);
         } else {
-            respon.setPesan("Register Gagal Email Sudah Terdafatar");
+            respon.setPesan("Register Gagal No Meteran Sudah Terdafatar");
         }
         return respon;
     }
