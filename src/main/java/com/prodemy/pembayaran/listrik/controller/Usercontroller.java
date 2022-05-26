@@ -38,13 +38,16 @@ public class Usercontroller {
         if (option.isEmpty()) {
             Optional<Admin> role = adm.findByNo_aplikasi(dto.getNo_pegawai());
             if (role.isPresent()) {
-                respon.setPesan("Register Berhasil");
+                respon.setPesan("Register Berhasil Anda Admin");
                 respon.setData(dto);
                 service.register(dto);
-                }else {
-                respon.setPesan("No Aplikasi Tidak Ditemukan");}
-            }else{
+            }else {
+                respon.setData(dto);
+                respon.setPesan("No Aplikasi Tidak Ditemukan Anda User");
+                service.register(dto);}
+        }else{
             respon.setPesan("Register Gagal Email Sudah Terdaftar");}
-            return respon;
-        }
+        return respon;
+    }
 }
+

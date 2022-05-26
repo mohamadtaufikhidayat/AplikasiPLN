@@ -17,18 +17,19 @@ public class Tagihan {
     private PenggunaListrik idPenggunaListrik;
 
     @OneToOne
-    @JoinColumn(name = "noUrut")
-    private CatatMeter noUrut;
+    @JoinColumn(name = "idCatat")
+    private CatatMeter idCatat;
     @Column(name = "bulan")
     private String bulan;
+
     @Column(name = "biaya")
     private Long biaya;
     @Column(name = "kwh")
     private Long kwh;
-    @Column
-    private String metodePembayaran;
-    @Column
-    private String status;
+//    @Column
+//    private String metodePembayaran;
+//    @Column
+//    private String status;
     public Long getNoTagihan() {
         return noTagihan;
     }
@@ -37,12 +38,12 @@ public class Tagihan {
         this.noTagihan = noTagihan;
     }
 
-    public CatatMeter getNoUrut() {
-        return noUrut;
+    public CatatMeter getIdCatat() {
+        return idCatat;
     }
 
-    public void setNoUrut(CatatMeter noUrut) {
-        this.noUrut = noUrut;
+    public void setIdCatat(CatatMeter idCatat) {
+        this.idCatat = idCatat;
     }
 
     public PenggunaListrik getIdPenggunaListrik() {
@@ -77,19 +78,19 @@ public class Tagihan {
         this.kwh = kwh;
     }
 
-    public String getMetodePembayaran() {
-        return metodePembayaran;
-    }
-
-    public void setMetodePembayaran(String metodePembayaran) {
-        this.metodePembayaran = metodePembayaran;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+//    public String getMetodePembayaran() {
+//        return metodePembayaran;
+//    }
+//
+//    public void setMetodePembayaran(String metodePembayaran) {
+//        this.metodePembayaran = metodePembayaran;
+//    }
+//
+//    public String getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(String status) {
+//        this.status = status;
+//    }
 }

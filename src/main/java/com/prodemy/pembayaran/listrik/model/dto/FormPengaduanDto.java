@@ -60,8 +60,4 @@ public class FormPengaduanDto {
         return status;
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 52b32ecdee5d332940005f66364861016f5621ec

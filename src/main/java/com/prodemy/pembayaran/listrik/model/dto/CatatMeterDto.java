@@ -1,17 +1,17 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
 public class CatatMeterDto {
-    private Long noUrut;
+    private Long idCatat;
     private Long idPenggunaListrik;
     private String bulanini;
     private Long cttkwh;
 
-    public Long getNoUrut() {
-        return noUrut;
+    public Long getIdCatat() {
+        return idCatat;
     }
 
-    public void setNoUrut(Long noUrut) {
-        this.noUrut = noUrut;
+    public void setIdCatat(Long idCatat) {
+        this.idCatat = idCatat;
     }
 
     public Long getIdPenggunaListrik() {

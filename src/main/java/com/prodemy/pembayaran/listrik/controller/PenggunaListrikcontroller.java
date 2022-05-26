@@ -26,7 +26,10 @@ public class PenggunaListrikcontroller {
 
     DataPelRepo repo1;
 
-    JenisPelangganRepo jenisPelangganRepo;
+    private final JenisPelangganRepo jenisPelangganRepo;
+    public PenggunaListrikcontroller(JenisPelangganRepo jenisPelangganRepo){
+        this.jenisPelangganRepo = jenisPelangganRepo;
+    }
     @Autowired
     Userrepo userrepo;
 

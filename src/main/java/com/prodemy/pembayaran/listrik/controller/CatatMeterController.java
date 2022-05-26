@@ -2,33 +2,33 @@ package com.prodemy.pembayaran.listrik.controller;
 
 import com.prodemy.pembayaran.listrik.Repository.CatatMeterRepo;
 import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
-import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
 import com.prodemy.pembayaran.listrik.model.dto.CatatMeterDto;
 import com.prodemy.pembayaran.listrik.model.entity.CatatMeter;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
-import com.prodemy.pembayaran.listrik.model.entity.Tagihan;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @RestController
 @RequestMapping("/catat")
 public class CatatMeterController {
-
     private final CatatMeterRepo catatMeterRepo;
-
     private final DataPelRepo dataPelRepo;
-
-//    private final Tagihanrepo tagihanrepo;
-
     public CatatMeterController(CatatMeterRepo catatMeterRepo, DataPelRepo dataPelRepo){
         this.catatMeterRepo = catatMeterRepo;
         this.dataPelRepo = dataPelRepo;
     }
-    @PostMapping("/kwh")
-    public CatatMeterDto catatKwh (@RequestBody CatatMeterDto ct){
+    @PostMapping("/kwhcurrent")
+    public CatatMeterDto catatKwh (@RequestBody CatatMeterDto ct) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM yyyy");
+        String date = sdf.format(new Date());
         CatatMeter catat = convertToEntity(ct);
+        catat.setBulanini(date);
         catatMeterRepo.save(catat);
         return convertToDto(catat);
     }
@@ -38,14 +38,13 @@ public class CatatMeterController {
             PenggunaListrik penggunaListrik = dataPelRepo.findById(ct.getIdPenggunaListrik()).get();
             cttkwh.setIdPenggunaListrik(penggunaListrik);
         }
-        cttkwh.setBulanini(ct.getBulanini());
         cttkwh.setCttkwh(ct.getCttkwh());
 
         return cttkwh;
     }
     private CatatMeterDto convertToDto(CatatMeter catat) {
         CatatMeterDto dto = new CatatMeterDto();
-        dto.setNoUrut(catat.getNoUrut());
+        dto.setIdCatat(catat.getIdCatat());
         dto.setIdPenggunaListrik(catat.getIdPenggunaListrik().getIdPengguna());
         dto.setBulanini(catat.getBulanini());
         dto.setCttkwh(catat.getCttkwh());

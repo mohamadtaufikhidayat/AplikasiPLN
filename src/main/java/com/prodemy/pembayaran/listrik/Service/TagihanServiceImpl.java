@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class TagihanServiceImpl implements TagihanService{
     @Autowired
     private Tagihanrepo tagihanrepo;
-
     @Override
     public Tagihan insertData(Tagihan tagihan) {
         Tagihan entity = tagihanrepo.save(tagihan);

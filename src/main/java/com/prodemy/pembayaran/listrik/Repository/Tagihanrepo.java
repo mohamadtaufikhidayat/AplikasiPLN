@@ -15,4 +15,6 @@ public interface Tagihanrepo extends JpaRepository<Tagihan,Long> {
 
     List<Tagihan> findByIdPenggunaListrikIdPengguna(Long idPengguna);
 
+    Optional<Tagihan> findAllByIdPenggunaListrikIdPengguna(Long idPengguna);
+
 }

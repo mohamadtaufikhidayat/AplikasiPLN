@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class TagihanDto {
     private Long noTagihan;
-    private Long noUrut;
+    private Long idCatat;
     private Long idPenggunaListrik;
     private String bulan;
     private Long biaya;
     private Long kwh;
-    private String metodePembayaran;
-    private String status;
+//    private String metodePembayaran;
+//    private String status;
 
 
     public Long getNoTagihan() {
@@ -21,12 +21,12 @@ public class TagihanDto {
         this.noTagihan = noTagihan;
     }
 
-    public Long getNoUrut() {
-        return noUrut;
+    public Long getIdCatat() {
+        return idCatat;
     }
 
-    public void setNoUrut(Long noUrut) {
-        this.noUrut = noUrut;
+    public void setIdCatat(Long idCatat) {
+        this.idCatat = idCatat;
     }
 
     public Long getIdPenggunaListrik() {
@@ -61,21 +61,21 @@ public class TagihanDto {
         this.kwh = kwh;
     }
 
-    public String getMetodePembayaran() {
-        return metodePembayaran;
-    }
-
-    public void setMetodePembayaran(String metodePembayaran) {
-        this.metodePembayaran = metodePembayaran;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+//    public String getMetodePembayaran() {
+//        return metodePembayaran;
+//    }
+//
+//    public void setMetodePembayaran(String metodePembayaran) {
+//        this.metodePembayaran = metodePembayaran;
+//    }
+//
+//    public String getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(String status) {
+//        this.status = status;
+//    }
 
 
 }

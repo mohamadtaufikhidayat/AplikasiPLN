@@ -2,12 +2,12 @@ package com.prodemy.pembayaran.listrik.model.entity;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "t_catatkwh")
+@Table(name = "t_catatmeter")
 public class CatatMeter {
     @Id
     @Column//pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long noUrut;
+    private Long idCatat;
 
     @ManyToOne
     @JoinColumn(name = "idPenggunaListrik",  nullable = false)
@@ -19,12 +19,12 @@ public class CatatMeter {
     @Column(name = "bulan",  nullable = false)
     private String bulanini;
 
-    public Long getNoUrut() {
-        return noUrut;
+    public Long getIdCatat() {
+        return idCatat;
     }
 
-    public void setNoUrut(Long noUrut) {
-        this.noUrut = noUrut;
+    public void setIdCatat(Long idCatat) {
+        this.idCatat = idCatat;
     }
 
     public PenggunaListrik getIdPenggunaListrik() {
