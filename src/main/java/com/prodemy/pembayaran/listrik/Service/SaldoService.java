@@ -18,7 +18,7 @@ import java.util.Optional;
 @Transactional
 public class SaldoService {
     @Autowired
-    Saldorepo sal;
+    Saldorepo saldorepo12;
 
     @Autowired
     AccountRepo repo;
@@ -38,12 +38,12 @@ public class SaldoService {
 
     public Saldo convertDtoEntitySaldoTrans(SaldoDto dto) {
         Saldo data = new Saldo();
-        Long id = sal.findIdByPhone(dto.getNo_telp());
-        Long saldo = sal.findBySaldoByPhone(dto.getNo_telp());
+        Long id12 = saldorepo12.findIdByPhone(dto.getNo_telp());
+        Long saldo = saldorepo12.findBySaldoByPhone(dto.getNo_telp());
         data.setSaldo(saldo);
         data.setPemasukan(dto.getPemasukan());
         data.setPengeluaran(dto.getPengeluaran());
-        data.setId_acc(id);
+        data.setId_acc(id12);
 
         if (repo.findById(dto.getNo_telp()).isPresent()) ;
         Account acc = repo.findById(dto.getNo_telp()).get();

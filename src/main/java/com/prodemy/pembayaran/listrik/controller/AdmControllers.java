@@ -35,7 +35,7 @@ public class AdmControllers {
     @PostMapping("/admin")
     public DefaultResponse register(@RequestBody AdminDto dto){
         DefaultResponse<AdminDto> data = new DefaultResponse<>();
-        Optional<Admin> option = repo.findById(dto.getId());
+        Optional<Admin> option = repo.findByNoID(dto.getId());
         if(option.isPresent()){
             data.setPesan("Register Gagal Anda sudah terdaftar ");
 
@@ -43,6 +43,7 @@ public class AdmControllers {
             data.setData(dto);
             data.setPesan("Regitrasi Berhasil!!!");
             ser.register(dto);
+
         }
         return data;
     }
@@ -69,7 +70,6 @@ public class AdmControllers {
         kotaDto.setId(kota.getNoInduk());
         kotaDto.setEmail(kota.getEmail());
         kotaDto.setPassword(kota.getPassword());
-        kotaDto.setNo_pegawai(kota.getData());
         return kotaDto;
     }
 }

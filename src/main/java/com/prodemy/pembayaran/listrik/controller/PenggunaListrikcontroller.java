@@ -49,17 +49,15 @@ public class PenggunaListrikcontroller {
         pel.setNamaPengguna(dtoP.getNamaPengguna());
         pel.setIdPengguna(dtoP.getIdPengguna());
         pel.setAlamat(dtoP.getAlamat());
-        pel.setDaya(dtoP.getDaya());
-        pel.setJenisPengguna(dtoP.getJenisPengguna());
         pel.setProvinsi(dtoP.getProvinsi());
         pel.setKota(dtoP.getKota());
         pel.setKecamatan(dtoP.getKecamatan());
         pel.setKelurahan(dtoP.getKelurahan());
 
-        if (userrepo.findById(dtoP.getUser_id()).isPresent()) {
-            User user = userrepo.findById(dtoP.getUser_id()).get();
-            pel.setUser(user);
-        }
+//        if (userrepo.findById(dtoP.getUser_id()).isPresent()) {
+//            User user = userrepo.findById(dtoP.getUser_id()).get();
+//            pel.setUser(user);
+//        }
 
         return pel;
     }
@@ -75,7 +73,7 @@ public class PenggunaListrikcontroller {
         dto.setKota(lis.getKota());
         dto.setKecamatan(lis.getKecamatan());
         dto.setKelurahan(lis.getKelurahan());
-        dto.setUser_id(lis.getUser().getNoInduk());
+//        dto.setUser_id(lis.getUser().getNoInduk());
         return dto;
     }
 
@@ -95,12 +93,12 @@ public class PenggunaListrikcontroller {
         return kecdto;
     }
 
-    @GetMapping("/list/{user_id}")
-    public List<PenggunaListrikDto> find(@PathVariable Long user_id) {
-        List<PenggunaListrik> find = repo.findByuser(user_id);
-        List<PenggunaListrikDto> peng = find.stream().map(this::convertEntitytoDTO)
-                .collect(Collectors.toList());
-        return peng;
-    }
+//    @GetMapping("/list/{user_id}")
+//    public List<PenggunaListrikDto> find(@PathVariable Long user_id) {
+//        List<PenggunaListrik> find = repo.findByuser(user_id);
+//        List<PenggunaListrikDto> peng = find.stream().map(this::convertEntitytoDTO)
+//                .collect(Collectors.toList());
+//        return peng;
+//    }
 }
 

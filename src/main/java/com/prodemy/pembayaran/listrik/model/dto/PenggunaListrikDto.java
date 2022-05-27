@@ -11,7 +11,6 @@ public class PenggunaListrikDto {
     private String kecamatan;
     private String kelurahan;
     private String jenisPengguna;
-    private Long user_id;
     private Long daya;
 
     public Long getIdPengguna() {
@@ -54,13 +53,6 @@ public class PenggunaListrikDto {
         this.daya = daya;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
 
     public String getProvinsi() {
         return provinsi;

@@ -26,9 +26,9 @@ public class PenggunaListrik {
     @Column
     private Long daya;
 
-    @ManyToOne
-    @JoinColumn(name="no_penggunaapp", nullable = false)
-    private User app;
+//    @ManyToOne
+//    @JoinColumn(name="no_penggunaapp", nullable = false)
+//    private User app;
 
 
     public Long getIdPengguna() {
@@ -71,13 +71,13 @@ public class PenggunaListrik {
         this.daya = daya;
     }
 
-    public User getUser() {
-        return app;
-    }
-
-    public void setUser(User app) {
-        this.app = app;
-    }
+//    public User getUser() {
+//        return app;
+//    }
+//
+//    public void setUser(User app) {
+//        this.app = app;
+//    }
 
     public String getProvinsi() { return provinsi; }
 

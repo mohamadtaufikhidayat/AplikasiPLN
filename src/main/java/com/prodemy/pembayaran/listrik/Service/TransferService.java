@@ -31,7 +31,7 @@ public class TransferService {
         Transfer data = convertDtotoEntity(dto);
         Saldo awalan = convertfromTransferDtoAwalan(dto);
         Saldo sasaran = convertfromTransferDtotoTujuan(dto);
-        DefaultResponse<TransferDto> respon = new DefaultResponse<>();
+        DefaultResponse<Transfer> respon = new DefaultResponse<>();
         Optional<Account> awal = akun.findById(dto.getAcc());
         Optional<Account> tujuan = akun.findById(dto.getTujuan());
         if (awal.isPresent() && tujuan.isPresent()) {
@@ -40,7 +40,7 @@ public class TransferService {
                 trans.save(data);
                 dto.setKodetransfer(data.getKodetransfer());
                 respon.setPesan("Transaksi Berhasil");
-                respon.setData(dto);
+                respon.setData(data);
                 repo.save(awalan);
                 repo.save(sasaran);
             } else {

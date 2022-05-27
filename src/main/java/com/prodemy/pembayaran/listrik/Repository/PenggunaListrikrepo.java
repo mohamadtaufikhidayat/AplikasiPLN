@@ -19,6 +19,4 @@ public interface PenggunaListrikrepo extends JpaRepository<PenggunaListrik,Long>
     @Query("select r from PenggunaListrik r where r.idPengguna = :idPengguna")
     Optional<PenggunaListrik> findByIdPengguna(@PathParam("idPelanggan")Long idPengguna);
 
-    @Query("select p from PenggunaListrik p where p.app.noInduk = :user_id")
-    List<PenggunaListrik> findByuser(@PathParam("user_id")Long user_id);
 }

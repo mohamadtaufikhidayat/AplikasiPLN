@@ -5,7 +5,9 @@ import com.prodemy.pembayaran.listrik.Repository.Saldorepo;
 import com.prodemy.pembayaran.listrik.Service.SaldoService;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.SaldoDto;
+import com.prodemy.pembayaran.listrik.model.entity.Account;
 import com.prodemy.pembayaran.listrik.model.entity.Saldo;
+import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,6 +83,19 @@ public class SaldoController {
         dto.setId(data.getId_acc());
         dto.setWaktu(data.getCreateDate());
         return dto;
+    }
+    public Saldo converttoEntity(SaldoDto dto){
+        Saldo data = new Saldo();
+        Long id = repo.findIdByPhone(dto.getNo_telp());
+        data.setId_acc(id);
+        data.setPengeluaran(dto.getPengeluaran());
+        data.setSaldo(dto.getSaldo());
+        data.setCreateDate(dto.getWaktu());
+        if (accrepo.findById(dto.getNo_telp()).isPresent()) {
+            Account user = accrepo.findById(dto.getNo_telp()).get();
+            data.setAccount(user);
+        }
+        return data;
     }
 
 }

@@ -19,6 +19,7 @@ public class AdminService {
     public AdminDto register (AdminDto dto) {
         Admin data = convertDTOtoEntity(dto);
         repo.save(data);
+        dto.setNo_aplikasi(data.getNo_aplikasi());
         return (dto);
     }
     public Admin convertDTOtoEntity(AdminDto dto) {

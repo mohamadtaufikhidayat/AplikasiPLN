@@ -15,4 +15,7 @@ public interface AdminRepo extends JpaRepository<Admin, Long> {
 
     @Query ("select x from Admin x where x.no_aplikasi = :no_Pegawai")
     Optional<Admin> findByNo_aplikasi(@PathParam("no_pegawai")Long no_Pegawai);
+
+    @Query("select x from Admin x where x.id =:id")
+    Optional<Admin> findByNoID(@PathParam("id")Long id);
 }

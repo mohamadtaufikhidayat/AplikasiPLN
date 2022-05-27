@@ -29,12 +29,13 @@ public class LoginController {
 
     @PostMapping("/login")
     public DefaultResponse login(@RequestBody UserDto dto) {
-        Login log = convertToEntity(dto);
         DefaultResponse<Login> respon = new DefaultResponse<>();
         Optional<User> option = repo.findByEmail(dto.getEmail());
+
         if (option.isEmpty()) {
             respon.setPesan("Email Tidak Ada");
         } else {
+            Login log = convertToEntity(dto);
             Optional<User> password = repo.findByPassword(dto.getEmail());
             if (String.valueOf(password).equals(String.format("Optional[%s]", dto.getPassword()))) {
                 Optional<User> role = repo.findByPegawai(dto.getEmail());
@@ -82,6 +83,7 @@ public class LoginController {
         LoginDto dto = new LoginDto();
         dto.setEmail(log.getUser().getEmail());
         dto.setPassword(log.getPassword());
+        dto.setId(log.getId());
         dto.setRole(log.getRole());
         dto.setWaktu(String.valueOf(log.getCreateDate()));
         return dto;
