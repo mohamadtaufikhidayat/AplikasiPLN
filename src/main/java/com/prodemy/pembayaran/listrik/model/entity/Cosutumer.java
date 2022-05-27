@@ -4,11 +4,11 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "tbl_peluser")
-public class Pelanggan {
+public class Cosutumer {
     @Id
     @GeneratedValue(generator = "sequence-generator")
     @GenericGenerator(

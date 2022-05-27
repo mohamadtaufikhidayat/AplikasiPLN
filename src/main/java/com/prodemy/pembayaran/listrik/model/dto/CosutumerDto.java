@@ -1,6 +1,6 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-public class PelangganDto {
+public class CosutumerDto {
 
     private Long no_langganan;
 
