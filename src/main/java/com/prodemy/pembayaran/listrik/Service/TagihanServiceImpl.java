@@ -14,10 +14,10 @@ public class TagihanServiceImpl implements TagihanService{
     @Override
     public Tagihan insertData(Tagihan tagihan) {
         Tagihan entity = tagihanrepo.save(tagihan);
-        entity.setIdPenggunaListrik(tagihan.getNoUrut().getIdPenggunaListrik());
-        entity.setBulan(tagihan.getNoUrut().getBulanini());
-        entity.setKwh(tagihan.getNoUrut().getCttkwh());
-        entity.setBiaya(tagihan.getKwh()*tagihan.getIdPenggunaListrik().getIdJenis().getTarif());
+        entity.setIdPenggunaListrik(tagihan.getIdCatat().getIdPenggunaListrik());
+        entity.setBulan(tagihan.getIdCatat().getBulanini());
+        entity.setKwh(tagihan.getIdCatat().getCttkwh());
+        entity.setBiaya((long) (tagihan.getKwh()*tagihan.getIdPenggunaListrik().getIdJenis().getTarif()));
         return tagihanrepo.save(entity);
     }
 

@@ -1,7 +1,5 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-import java.util.Date;
-
 public class TagihanDto {
     private Long noTagihan;
     private Long idCatat;
@@ -9,10 +7,6 @@ public class TagihanDto {
     private String bulan;
     private Long biaya;
     private Long kwh;
-//    private String metodePembayaran;
-//    private String status;
-
-
     public Long getNoTagihan() {
         return noTagihan;
     }
@@ -60,22 +54,6 @@ public class TagihanDto {
     public void setKwh(Long kwh) {
         this.kwh = kwh;
     }
-
-//    public String getMetodePembayaran() {
-//        return metodePembayaran;
-//    }
-//
-//    public void setMetodePembayaran(String metodePembayaran) {
-//        this.metodePembayaran = metodePembayaran;
-//    }
-//
-//    public String getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(String status) {
-//        this.status = status;
-//    }
 
 
 }

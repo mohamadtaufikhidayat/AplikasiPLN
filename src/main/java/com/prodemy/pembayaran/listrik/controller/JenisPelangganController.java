@@ -4,6 +4,7 @@ import com.prodemy.pembayaran.listrik.Repository.JenisPelangganRepo;
 import com.prodemy.pembayaran.listrik.Repository.UpdateJenisPelangganRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.JenisPelangganDto;
+import com.prodemy.pembayaran.listrik.model.dto.UpdateJenisPelangganDto;
 import com.prodemy.pembayaran.listrik.model.entity.JenisPelanggan;
 import com.prodemy.pembayaran.listrik.model.entity.UpdateJenisPelanggan;
 import org.springframework.web.bind.annotation.*;
@@ -81,6 +82,25 @@ public class JenisPelangganController {
         }
         return response;
     }
+    @GetMapping("/listupdatejenis")
+    public List<UpdateJenisPelangganDto> getAll(){
+        List<UpdateJenisPelangganDto> list = new ArrayList<>();
+        for(UpdateJenisPelanggan m : updateJenisPelangganRepo.findAll()) {
+            list.add(convertIniToDto(m));
+        }
+        return list;
+    }
+
+    private UpdateJenisPelangganDto convertIniToDto(UpdateJenisPelanggan up) {
+        UpdateJenisPelangganDto dto = new UpdateJenisPelangganDto();
+        dto.setTglUp(up.getTglUp());
+        dto.setIdJenisUp(up.getIdJenisUp());
+        dto.setJenisUp(up.getJenisUp());
+        dto.setDayaUp(up.getDayaUp());
+        dto.setTarifUp(up.getTarifUp());
+        return dto;
+    }
+
     private UpdateJenisPelanggan convertIniToEntity(JenisPelangganDto dto) {
         UpdateJenisPelanggan up = new UpdateJenisPelanggan();
         up.setJenisUp(dto.getJenis());

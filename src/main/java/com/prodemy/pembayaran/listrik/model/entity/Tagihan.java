@@ -1,6 +1,8 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,17 @@ public class Tagihan {
 
     @Id
     @Column//pk
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "sequencetagihan",
+            strategy = GenerationType.SEQUENCE)
+    @GenericGenerator(
+            name = "sequencetagihan",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "tagihan_sequence"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "8101"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
     private Long noTagihan;
 
     @ManyToOne//fk

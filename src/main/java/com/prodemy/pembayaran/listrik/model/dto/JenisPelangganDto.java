@@ -6,7 +6,7 @@ public class JenisPelangganDto {
 
     private String daya;
 
-    private Long tarif;
+    private Double tarif;
 
     public Long getIdJenis() {
         return idJenis;
@@ -32,11 +32,11 @@ public class JenisPelangganDto {
         this.daya = daya;
     }
 
-    public Long getTarif() {
+    public Double getTarif() {
         return tarif;
     }
 
-    public void setTarif(Long tarif) {
+    public void setTarif(Double tarif) {
         this.tarif = tarif;
     }
 }
